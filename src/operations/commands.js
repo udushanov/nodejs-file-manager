@@ -1,5 +1,6 @@
 import { parse } from "node:path";
 import { navigateUp } from "./nwd/up.js";
+import { changeDirectory } from "./nwd/cd.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -12,7 +13,7 @@ export const processCommand = async (command) => {
       currentDirectory = await navigateUp(rootDirectory, currentDirectory);
       break;
     case "cd":
-      //
+      currentDirectory = await changeDirectory(currentDirectory, args[0]);
       break;
     case "ls":
       //
