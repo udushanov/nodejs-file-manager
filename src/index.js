@@ -1,4 +1,3 @@
-import { dirname } from "node:path";
 import { startFileManager } from "./operations/file-manager.js";
 
 const args = process.argv.slice(2);
