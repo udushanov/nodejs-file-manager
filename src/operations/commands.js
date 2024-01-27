@@ -9,6 +9,7 @@ import { copyFile } from "./basics/cp.js";
 import { moveFile } from "./basics/mv.js";
 import { removeFile } from "./basics/rm.js";
 import { operationSystemInformation } from "./os/os.js";
+import { hashFile } from "./hash/hash.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -46,6 +47,9 @@ export const processCommand = async (command) => {
       break;
     case "os":
       operationSystemInformation(args[0]);
+      break;
+    case "hash":
+      hashFile(currentDirectory, args[0]);
       break;
     default:
       console.error("Invalid input: Unknown operation");
