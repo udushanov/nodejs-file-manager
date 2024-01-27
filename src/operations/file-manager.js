@@ -27,6 +27,7 @@ export const startFileManager = (username) => {
   });
 
   rl.on("close", () => {
+    printGoodByeMessage(username);
     process.exit(0);
   });
 };

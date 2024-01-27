@@ -11,6 +11,7 @@ import { removeFile } from "./basics/rm.js";
 import { operationSystemInformation } from "./os/os.js";
 import { hashFile } from "./hash/hash.js";
 import { compressFile } from "./zip/compress.js";
+import { decompressFile } from "./zip/decompress.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -54,6 +55,9 @@ export const processCommand = async (command) => {
       break;
     case "compress":
       await compressFile(currentDirectory, ...args);
+      break;
+    case "decompress":
+      await decompressFile(currentDirectory, ...args);
       break;
     default:
       console.error("Invalid input: Unknown operation");
