@@ -4,6 +4,7 @@ import { changeDirectory } from "./nwd/cd.js";
 import { listDirectoryContents } from "./nwd/ls.js";
 import { fileContent } from "./basics/cat.js";
 import { addNewFile } from "./basics/add.js";
+import { renameFile } from "./basics/rn.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -26,6 +27,9 @@ export const processCommand = async (command) => {
       break;
     case "add":
       await addNewFile(currentDirectory, args[0]);
+      break;
+    case "rn":
+      await renameFile(currentDirectory, ...args);
       break;
     default:
       console.error("Invalid input: Unknown operation");
