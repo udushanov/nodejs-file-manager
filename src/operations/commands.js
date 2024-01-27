@@ -7,6 +7,7 @@ import { addNewFile } from "./basics/add.js";
 import { renameFile } from "./basics/rn.js";
 import { copyFile } from "./basics/cp.js";
 import { moveFile } from "./basics/mv.js";
+import { removeFile } from "./basics/rm.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -38,6 +39,9 @@ export const processCommand = async (command) => {
       break;
     case "mv":
       await moveFile(currentDirectory, ...args);
+      break;
+    case "rm":
+      await removeFile(currentDirectory, args[0]);
       break;
     default:
       console.error("Invalid input: Unknown operation");
