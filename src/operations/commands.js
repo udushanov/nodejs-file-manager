@@ -2,6 +2,7 @@ import { parse } from "node:path";
 import { navigateUp } from "./nwd/up.js";
 import { changeDirectory } from "./nwd/cd.js";
 import { listDirectoryContents } from "./nwd/ls.js";
+import { fileContent } from "./basics/cat.js";
 
 const rootDirectory = parse(process.cwd()).root;
 let currentDirectory = process.cwd();
@@ -18,6 +19,9 @@ export const processCommand = async (command) => {
       break;
     case "ls":
       await listDirectoryContents(currentDirectory);
+      break;
+    case "cat":
+      await fileContent(currentDirectory, args[0]);
       break;
     default:
       console.error("Invalid input: Unknown operation");
