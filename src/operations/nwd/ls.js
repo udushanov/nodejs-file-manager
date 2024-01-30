@@ -20,21 +20,22 @@ export const listDirectoryContents = async (currentDirectory) => {
 
     const directoriesCount = directories.length;
     const data = [...directories.sort(), ...files.sort()];
-
-    console.log("+-------+-------+----------+");
-    console.log("| Index\t| Name\t| Type\t\t|");
-    console.log("+-------+-------+----------+");
+    const dataToConsole = [];
 
     for (let i = 0; i < data.length; i++) {
+      const formattedData = {};
       let fileType = "directory";
 
       if (i > directoriesCount - 1) {
         fileType = "file";
       }
 
-      console.log(`| ${i}\t| ${data[i]}\t| ${fileType}\t|`);
-      console.log("+-------+-------+----------+");
+      formattedData.Name = data[i];
+      formattedData.Type = fileType;
+      dataToConsole.push(formattedData);
     }
+
+    console.table(dataToConsole);
   } catch (err) {
     console.error("Operation failed:", err.message);
   }
